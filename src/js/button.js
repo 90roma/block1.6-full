@@ -1,6 +1,14 @@
 const btn = document.querySelectorAll('.btn');
 const btnIcon = document.querySelectorAll('.btn-icon');
 const btnText = document.querySelectorAll('.btn-text');
+const body = document.querySelector('.body');
+function bodyFixed() {
+  if (bgSlide.className === 'menu-bg menu-bg--open') {
+     body.className = 'body body--overflow';
+  } else {
+    body.className = 'body';
+  }
+};
 
 const aboutUsWrapper = document.querySelector('.section-services__text-wrapper');
 const brandWrapper = document.querySelector('.section-brand__wrapper');
@@ -48,9 +56,11 @@ const menuCall = document.querySelector('.menu-call');
 
 const btnBurger = document.querySelector('.btn-circle--burger');
 btnBurger.addEventListener('click', function () {
+  bodyFixed();
     if (mainMenu.className === 'main-menu main-menu--close') {
         mainMenu.className = 'main-menu main-menu--open';
         bgSlide.className = 'menu-bg menu-bg--open';
+
     } else {
         mainMenu.className = 'main-menu main-menu--close';
         bgSlide.className = 'menu-bg menu-bg--close';
@@ -65,14 +75,16 @@ function close() {
     menuCall.className = 'menu-call menu-call--close';
 }
 
-bgSlide.onclick = function() {
-    close();
-};
+bgSlide.addEventListener ('click', function() {
+  close();
+  bodyFixed();
+})
 
 const btnClose = document.querySelectorAll('.btn-circle--close');
 for (let i = 0; i < btnClose.length; i++) {
     btnClose[i].onclick = function () {
         close();
+        bodyFixed();
     }
 }
 
@@ -84,6 +96,7 @@ for (let i = 0; i < btnCall.length; i++) {
          bgSlide.className = 'menu-bg menu-bg--open';
          mainMenu.className = 'main-menu main-menu--close';
          menuChat.className = 'menu-chat menu-chat--close';
+         bodyFixed();
      } else {
          menuCall.className = 'menu-call menu-call--close';
          bgSlide.className = 'menu-bg menu-bg--close';
@@ -99,6 +112,7 @@ for (let i = 0; i < btnChat.length; i++) {
             bgSlide.className = 'menu-bg menu-bg--open';
             mainMenu.className = 'main-menu main-menu--close';
             menuCall.className = 'menu-call menu-call--close';
+            bodyFixed();
         } else {
             menuChat.className = 'menu-chat menu-chat--close';
             bgSlide.className = 'menu-bg menu-bg--close';

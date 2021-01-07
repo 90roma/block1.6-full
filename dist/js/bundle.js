@@ -86,22 +86,30 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/js/btn.js":
-/*!***********************!*\
-  !*** ./src/js/btn.js ***!
-  \***********************/
+/***/ "./src/js/button.js":
+/*!**************************!*\
+  !*** ./src/js/button.js ***!
+  \**************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 var btn = document.querySelectorAll('.btn');
 var btnIcon = document.querySelectorAll('.btn-icon');
 var btnText = document.querySelectorAll('.btn-text');
+var body = document.querySelector('.body');
+
+function bodyFixed() {
+  if (bgSlide.className === 'menu-bg menu-bg--open') {
+    body.className = 'body body--overflow';
+  } else {
+    body.className = 'body';
+  }
+}
+
+;
 var aboutUsWrapper = document.querySelector('.section-services__text-wrapper');
 var brandWrapper = document.querySelector('.section-brand__wrapper');
 var techWrapper = document.querySelector('.section-technics__wrapper');
-var btnServ = document.getElementById('section-service__btn');
-var btnBrand = document.getElementById('section-brand__btn');
-var btnTech = document.getElementById('section-technics__btn');
 
 function clickBtn() {
   var _loop = function _loop(i) {
@@ -122,48 +130,32 @@ function clickBtn() {
 }
 
 clickBtn();
+var btnServ = document.getElementById('section-service__btn');
 btnServ.addEventListener('click', function () {
   clickBtn();
   aboutUsWrapper.classList.toggle('section-services__text-wrapper--show');
   clickBtn();
 });
+var btnBrand = document.getElementById('section-brand__btn');
 btnBrand.addEventListener('click', function () {
   clickBtn();
   brandWrapper.classList.toggle('section-brand__wrapper');
   clickBtn();
 });
+var btnTech = document.getElementById('section-technics__btn');
 btnTech.addEventListener('click', function () {
   clickBtn();
   techWrapper.classList.toggle('section-technics__wrapper');
   clickBtn();
 });
-
-/***/ }),
-
-/***/ "./src/js/button.js":
-/*!**************************!*\
-  !*** ./src/js/button.js ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
 var bgSlide = document.querySelector('.menu-bg');
 var mainMenu = document.querySelector('.main-menu');
 var menuChat = document.querySelector('.menu-chat');
 var menuCall = document.querySelector('.menu-call');
-var btnBurger = document.querySelector('.header__btn-circle--burger');
-var btnClose = document.querySelectorAll('.btn-circle--close');
-var btnCall = document.querySelectorAll('.btn-circle--call');
-var btnChat = document.querySelectorAll('.btn-circle--chat');
-
-function close() {
-  bgSlide.className = 'menu-bg menu-bg--close';
-  mainMenu.className = 'main-menu main-menu--close';
-  menuChat.className = 'menu-chat menu-chat--close';
-  menuCall.className = 'menu-call menu-call--close';
-}
-
+var btnBurger = document.querySelector('.btn-circle--burger');
 btnBurger.addEventListener('click', function () {
+  bodyFixed();
+
   if (mainMenu.className === 'main-menu main-menu--close') {
     mainMenu.className = 'main-menu main-menu--open';
     bgSlide.className = 'menu-bg menu-bg--open';
@@ -175,17 +167,36 @@ btnBurger.addEventListener('click', function () {
   mainMenu.classList.toggle('main-menu--shadow');
 });
 
-bgSlide.onclick = function () {
-  close();
-};
+function close() {
+  bgSlide.className = 'menu-bg menu-bg--close';
+  mainMenu.className = 'main-menu main-menu--close';
+  menuChat.className = 'menu-chat menu-chat--close';
+  menuCall.className = 'menu-call menu-call--close';
+}
 
-for (var i = 0; i < btnCall.length; i++) {
-  btnCall[i].addEventListener('click', function () {
+bgSlide.addEventListener('click', function () {
+  close();
+  bodyFixed();
+});
+var btnClose = document.querySelectorAll('.btn-circle--close');
+
+for (var i = 0; i < btnClose.length; i++) {
+  btnClose[i].onclick = function () {
+    close();
+    bodyFixed();
+  };
+}
+
+var btnCall = document.querySelectorAll('.btn-circle--call');
+
+for (var _i = 0; _i < btnCall.length; _i++) {
+  btnCall[_i].addEventListener('click', function () {
     if (menuCall.className === 'menu-call menu-call--close') {
       menuCall.className = 'menu-call menu-call--open';
       bgSlide.className = 'menu-bg menu-bg--open';
       mainMenu.className = 'main-menu main-menu--close';
       menuChat.className = 'menu-chat menu-chat--close';
+      bodyFixed();
     } else {
       menuCall.className = 'menu-call menu-call--close';
       bgSlide.className = 'menu-bg menu-bg--close';
@@ -193,24 +204,21 @@ for (var i = 0; i < btnCall.length; i++) {
   });
 }
 
-for (var _i = 0; _i < btnChat.length; _i++) {
-  btnChat[_i].addEventListener('click', function () {
+var btnChat = document.querySelectorAll('.btn-circle--chat');
+
+for (var _i2 = 0; _i2 < btnChat.length; _i2++) {
+  btnChat[_i2].addEventListener('click', function () {
     if (menuChat.className === 'menu-chat menu-chat--close') {
       menuChat.className = 'menu-chat menu-chat--open';
       bgSlide.className = 'menu-bg menu-bg--open';
       mainMenu.className = 'main-menu main-menu--close';
       menuCall.className = 'menu-call menu-call--close';
+      bodyFixed();
     } else {
       menuChat.className = 'menu-chat menu-chat--close';
       bgSlide.className = 'menu-bg menu-bg--close';
     }
   });
-}
-
-for (var _i2 = 0; _i2 < btnClose.length; _i2++) {
-  btnClose[_i2].onclick = function () {
-    close();
-  };
 }
 
 /***/ }),
@@ -226,20 +234,18 @@ for (var _i2 = 0; _i2 < btnClose.length; _i2++) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scss_basic_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/basic.scss */ "./src/scss/basic.scss");
 /* harmony import */ var _scss_basic_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_basic_scss__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _js_btn_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../js/btn.js */ "./src/js/btn.js");
-/* harmony import */ var _js_btn_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_btn_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _scss_fonts_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../scss/fonts.scss */ "./src/scss/fonts.scss");
-/* harmony import */ var _scss_fonts_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_scss_fonts_scss__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../scss/style.scss */ "./src/scss/style.scss");
-/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _scss_fonts_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/fonts.scss */ "./src/scss/fonts.scss");
+/* harmony import */ var _scss_fonts_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_scss_fonts_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../scss/style.scss */ "./src/scss/style.scss");
+/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _scss_mobile_swiper_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../scss/mobile-swiper.scss */ "./src/scss/mobile-swiper.scss");
+/* harmony import */ var _scss_mobile_swiper_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_scss_mobile_swiper_scss__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _js_nav_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../js/nav.js */ "./src/js/nav.js");
 /* harmony import */ var _js_nav_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_js_nav_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _scss_mobile_swiper_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../scss/mobile-swiper.scss */ "./src/scss/mobile-swiper.scss");
-/* harmony import */ var _scss_mobile_swiper_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_scss_mobile_swiper_scss__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _js_swiper_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../js/swiper.js */ "./src/js/swiper.js");
-/* harmony import */ var _js_swiper_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_js_swiper_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _js_button_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../js/button.js */ "./src/js/button.js");
-/* harmony import */ var _js_button_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_js_button_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _js_swiper_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../js/swiper.js */ "./src/js/swiper.js");
+/* harmony import */ var _js_swiper_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_js_swiper_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _js_button_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../js/button.js */ "./src/js/button.js");
+/* harmony import */ var _js_button_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_js_button_js__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
@@ -247,7 +253,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // console.log('Works!');
 
 /***/ }),
 
@@ -300,12 +305,12 @@ sliders.forEach(function (el) {
       clickable: true
     },
     breakpoints: {
-      340: {
-        slidesPerView: 1.5,
-        spaceBetween: 24
+      320: {
+        slidesPerView: 1.2,
+        spaceBetween: 16
       },
-      420: {
-        slidesPerView: 1.9,
+      560: {
+        slidesPerView: 1.3,
         spaceBetween: 24
       }
     }

@@ -46,6 +46,10 @@ body {
   @extend %font-style--regular;
 }
 
+.body--overflow {
+  overflow: hidden;
+}
+
 .main {
   display: flex;
   width: 100%;
@@ -217,7 +221,8 @@ body {
   }
 
   &--close {
-    transform: translateX(-300%);
+    transform: translateX(600%);
+    right: 0;
   }
 
   &--open {
@@ -279,7 +284,8 @@ body {
   }
 
   &--close {
-    transform: translateX(-300%);
+    transform: translateX(600%);
+    right: 0;
   }
 
   &--open {
@@ -297,7 +303,7 @@ body {
   z-index: 10;
 
   &--close {
-    transform: translateX(-300%);
+    transform: translateX(600%);
   }
 
   &--open {
@@ -312,9 +318,10 @@ body {
   text-decoration: none;
   white-space: nowrap;
   list-style-type: none;
+  border: 2px solid transparent;
 
   &--horizon--active {
-    padding: 8px 16px;
+    padding: 6px 14px;
     border: 2px solid $blue;
     border-radius: 6px;
     background: $bgColor;
@@ -910,7 +917,6 @@ body {
 
       &__heading-container {
         padding: 24px 0 0 0;
-
       }
 
       &__h1::before {
@@ -1022,11 +1028,12 @@ body {
     }
   }
 }
+
 @media (max-width: 560px) {
   .btn-circle--close {
     position: relative;
     transform: translate(0, 0);
-    margin-bottom: 32px;
+    // margin-bottom: 32px;
   }
 
   .menu-chat {
@@ -1034,7 +1041,7 @@ body {
     padding: 24px 16px 24px 16px;
 
     &__heading {
-      margin: 0 0 8px -16px;
+      margin: 32px 0 8px -16px;
 
       &::before {
         content: " ";
@@ -1061,13 +1068,12 @@ body {
       margin: 8px 0 0 auto;
     }
   }
-
   .menu-call {
     max-width: 360px;
     padding: 24px 16px 24px 16px;
 
     &__heading {
-      margin: 0 0 8px -16px;
+      margin: 32px 0 8px -16px;
 
       &::before {
         content: " ";
@@ -1136,6 +1142,10 @@ body {
        display: none;
      }
 
+     &__navigation {
+       display: none;
+     }
+
      &__nav-list {
        flex-wrap: nowrap;
        padding: 0 24px;
@@ -1168,6 +1178,10 @@ body {
        max-width: 360px;
        max-height: 176px;
        border-radius: 0;
+     }
+
+     &__btn-cont {
+       margin-bottom: 16px;
      }
    }
    .section-brand {

@@ -2,6 +2,7 @@ $border-color: #EAEAEA;
 $bg-color: #FFFFFF;
 $bg-color--lighten: #DDDDDD;
 $bg-color--dark: #B5B6BC;
+$tColor--lighten: #7E7E82;
 
 .swiper-container {
   width: 100vw;
@@ -12,8 +13,6 @@ $bg-color--dark: #B5B6BC;
   max-width: 240px;
   display: flex;
   justify-content: space-between;
-  background-color: $bg-color;
-  border: 1px solid $border-color;
   border-radius: 6px;
   text-decoration: none;
 }
@@ -41,67 +40,94 @@ $bg-color--dark: #B5B6BC;
   background-color: $bg-color--dark;
 }
 
-.section-brand__swiper-container {
-  width: 100vw;
-
-  .section-brand__swiper-wrapper {
-    padding: 0 24px;
-
-    .section-brand__swiper-slide {
-      align-items: center;
-      max-height: 72px;
-    }
+.section-services {
+  &__swiper-container {
+    padding: 0;
+    margin: 24px 0 16px 0;
+    width: 100vw;
   }
-}
 
-.section-technics__swiper-container {
-  width: 100vw;
-
-  .section-technics__swiper-wrapper {
+  &__swiper-wrapper {
     padding: 0 24px;
-
-    .section-technics__swiper-slide {
-      min-height: 160px;
-    }
-
-    .section-technics__logo-arrow {
-      align-self: flex-end;
-    }
   }
-}
 
-.section-price__swiper-container {
-  .section-price__swiper-wrapper {
-    padding: 0 0 0 24px;
-
-    .section-price__swiper-slide {
-      flex-direction: column;
+  &__swiper-slide {
+    width: auto;
+    align-items: center;
+    max-height: 40px;
+    font-family: 'TT Lakes Medium';
+    font-size: 16px;
+    color: $tColor--lighten;
+    white-space: nowrap;
+    &:first-child {
       min-width: 260px;
-      min-height: 200px;
-
-      .section-price__slider-btn {
-        position: absolute;
-        align-self: flex-end;
-        bottom: 16px;
-      }
-
-      .section-price__slider-text {
-        display: flex;
-        flex-direction: column;
-      }
     }
-
   }
 }
 
+.section-brand {
+  &__swiper-container {
+    width: 100vw;
+  }
 
-@media (min-width: 550px) and (max-width: 3200px) {
+  &__swiper-wrapper {
+    padding: 0 24px;
+  }
+
+  &__swiper-slide {
+    align-items: center;
+    max-height: 72px;
+    background-color: $bg-color;
+    border: 1px solid $border-color;
+  }
+}
+
+.section-technics {
+  &__swiper-container {
+      width: 100vw;
+  }
+
+  &__swiper-wrapper {
+    padding: 0 24px;
+  }
+
+  &__swiper-slide {
+    min-height: 160px;
+    background-color: $bg-color;
+    border: 1px solid $border-color;
+  }
+
+  &__logo-arrow {
+    align-self: flex-end;
+  }
+}
+
+.section-price {
+  &__swiper-wrapper {
+    padding: 0 0 0 24px;
+  }
+
+  &__swiper-slide {
+    flex-direction: column;
+    min-width: 260px;
+    min-height: 200px;
+    background-color: $bg-color;
+    border: 1px solid $border-color;
+  }
+  &__slider-btn {
+    position: absolute;
+    align-self: flex-end;
+    bottom: 16px;
+  }
+
+  &__slider-text {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 560px) and (max-width: 3200px) {
   .swiper-container {
     display: none;
   }
 }
-
-
-
-
-
